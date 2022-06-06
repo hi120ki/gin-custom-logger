@@ -1,4 +1,4 @@
-package middleware
+package customlogger
 
 import (
 	"bytes"
@@ -52,7 +52,7 @@ func CustomLogger() gin.HandlerFunc {
 		logInterface := map[string]interface{}{
 			"name":     "gin-custom-log",
 			"host":     c.ClientIP(),
-			"time":     time.Now().UnixMilli(),
+			"time":     time.Now().UnixNano(),
 			"status":   c.Writer.Status(),
 			"uri":      c.Request.URL.Path,
 			"method":   c.Request.Method,
